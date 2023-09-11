@@ -7,6 +7,18 @@ const randomNumber = () => Math.floor(Math.random() * colours.length);
 
 let currentColourIndex = 0;
 
+//update camera and render size when window is resized
+
+window.addEventListener("resize", () => {
+  const newWidth = window.innerWidth;
+  const newHeight = window.innerHeight;
+
+  camera.aspect = newWidth / newHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(newWidth, newHeight);
+});
+
+//set up cube
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,
