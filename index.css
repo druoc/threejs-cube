@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Maven+Pro&family=Oxygen:wght@300&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Abel", sans-serif;
+}
+
+.instructions {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  font-size: 1.3em;
+}

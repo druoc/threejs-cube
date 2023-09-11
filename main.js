@@ -1,5 +1,12 @@
 import * as THREE from "three";
 
+const colours = [0xffffff, 0xff0000, 0x0000ff, 0x00ff00, 0xffff00];
+
+// Random number generator
+const randomNumber = () => Math.floor(Math.random() * colours.length);
+
+let currentColourIndex = 0;
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -19,6 +26,34 @@ const material = new THREE.MeshBasicMaterial({
 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
+
+// Event listeners
+window.addEventListener("keydown", (e) => {
+  switch (e.key) {
+    case "ArrowUp":
+      cube.scale.addScalar(0.1);
+      break;
+    case "ArrowDown":
+      cube.scale.addScalar(-0.1);
+      break;
+    case "ArrowLeft":
+      cube.rotation.y += 0.1;
+      break;
+    case "ArrowRight":
+      cube.rotation.y -= 0.1;
+      break;
+    case "c":
+      currentColourIndex = randomNumber();
+      cube.material.color.setHex(colours[currentColourIndex]);
+      break;
+    case "v":
+      if (cube.material.wireframe === true) {
+        cube.material.wireframe = false;
+      } else {
+        cube.material.wireframe = true;
+      }
+  }
+});
 
 camera.position.z = 5;
 
